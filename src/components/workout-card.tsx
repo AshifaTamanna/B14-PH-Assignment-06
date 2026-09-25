@@ -8,7 +8,7 @@ export function WorkoutCard({ workout, index = 0 }: { workout: Workout; index?: 
     <Link className="workout-card" href={`/workout/${workout.id}`} style={{ animationDelay: `${Math.min(index, 11) * 45}ms` }}>
       <div className="workout-image-wrap">
         <Image className="workout-image" src={workout.image} alt={`${workout.name} illustration`} fill sizes="(max-width: 640px) 92vw, (max-width: 1000px) 45vw, 30vw" />
-        <span className="card-number">{String(workout.id).padStart(2, "0")}</span>
+        <span className="card-number">{workout.id}</span>
         <span className="image-arrow" aria-hidden="true">↗</span>
       </div>
       <div className="workout-card-body">

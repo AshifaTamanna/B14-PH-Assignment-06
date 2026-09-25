@@ -3,7 +3,7 @@ import { AppShell } from "@/components/app-shell";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "FitLog | Train with intent",
+  title: "FitLog",
   description: "A no-nonsense workout library and daily training log.",
 };
 
