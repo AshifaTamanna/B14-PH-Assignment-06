@@ -23,20 +23,4 @@ FitLog is a responsive workout library and daily training log. Browse exercises,
 6. **Workout tracking** with mark-as-done and remove actions.
 7. **Responsive interface** with mobile navigation, loading and empty states, and toast feedback.
 
-## Getting started
 
-Install dependencies and start the development server:
-
-```bash
-npm install
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Production build
-
-```bash
-npm run build
-npm start
-```
