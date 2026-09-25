@@ -1,30 +1,42 @@
 # FitLog
 
-FitLog is a responsive workout library and daily training log. Browse twelve strength and conditioning movements, inspect detailed instructions, build a five-lift plan, and keep a separate saved list.
+**Train with intent. Log every set.**
+
+FitLog is a responsive workout library and daily training log. Browse exercises, review instructions and equipment, save movements for later, or build a focused plan for today.
 
 ## Technologies
 
-- Next.js App Router and React
-- TypeScript
-- Tailwind CSS 4 with custom responsive styling
-- Lucide icons
-- FitLog REST API
-- Browser localStorage for the plan, saved lifts, and completion state
+- Next.js App Router
+- React and TypeScript
+- Tailwind CSS 4 and custom responsive CSS
+- Lucide React icons
+- FitLog workout API
+- Browser localStorage for persistent plan and saved workouts
 
 ## Features
 
-- API-backed library with search and sorting by duration, calories, or rating
-- Individual workout pages with equipment, sets, reps, stats, and instructions
-- Today's Plan with a five-exercise cap and live exercise, minute, and calorie totals
-- Saved-for-later list, mark-as-done, removal controls, and toast feedback
-- Persistent plan and saved items across page reloads
-- Responsive dark interface with mobile navigation and loading/empty/error states
+1. **Workout library** with API-powered exercise cards and numbered movements.
+2. **Workout details** with exercise images, muscle groups, equipment, difficulty, sets, reps, duration, calories, ratings, and instructions.
+3. **Today's Plan** with a five-workout limit and live exercise, duration, and calorie totals.
+4. **Saved workouts** with their own live totals and quick access to workout details.
+5. **Persistent lists** that remain available after a page reload.
+6. **Workout tracking** with mark-as-done and remove actions.
+7. **Responsive interface** with mobile navigation, loading and empty states, and toast feedback.
 
-## Run locally
+## Getting started
+
+Install dependencies and start the development server:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open http://localhost:3000. For a production build, run `npm run build` and then `npm start`.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Production build
+
+```bash
+npm run build
+npm start
+```
