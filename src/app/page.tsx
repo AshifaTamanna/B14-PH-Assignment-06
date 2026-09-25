@@ -38,10 +38,8 @@ export default function HomePage() {
         </div>
       </section>
       <section className="library-section" id="library">
-        <div className="section-topline"><span>01 / TRAINING INDEX</span><span>12 MOVEMENTS · ALL LEVELS</span></div>
         <div className="library-heading"><div><p className="eyebrow"><span className="eyebrow-line" />THE WORK STARTS HERE</p><h2>THE <span>LIBRARY</span></h2><p className="section-subtitle">Twelve lifts covering every major muscle group.</p></div></div>
         <div className="library-grid" aria-live="polite">{loading ? <div className="loading-state"><span className="loader" /><span>LOADING WORKOUTS</span></div> : error ? <div className="error-state">{error} <button onClick={() => window.location.reload()}>Try again</button></div> : workouts.map((workout, index) => <WorkoutCard key={workout.id} workout={workout} index={index} />)}</div>
-        <div className="library-bottom"><span>SHOWING {workouts.length.toString().padStart(2, "0")} MOVEMENTS</span><span>SELECT A MOVEMENT TO VIEW DETAILS <span className="bottom-arrow">↗</span></span></div>
       </section>
     </>
   );

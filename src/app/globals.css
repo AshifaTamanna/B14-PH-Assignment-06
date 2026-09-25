@@ -200,8 +200,9 @@ body{font-size:15px}
 .loading-state,.error-state,.no-results{font-size:11px}
 .detail-description{font-size:13px}
 .detail-tags .tag{font-size:9px}
-.spec-grid dt{font-size:9px}
-.spec-grid dd{font-size:11px}
+.spec-grid>div{min-height:42px}
+.spec-grid dt{font-size:11px}
+.spec-grid dd{font-size:13px}
 .instructions-block .detail-section-label{font-size:11px}
 .instructions-block li>span{font-size:10px}
 .instructions-block li p{font-size:11px}
