@@ -17,9 +17,7 @@ export default function WorkoutDetailsPage() {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`, {
-      signal: controller.signal,
-    })
+    fetch(`/api/workouts/${id}`, { signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error("Workout not found");
         return response.json() as Promise<Workout>;

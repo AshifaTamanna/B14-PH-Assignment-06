@@ -7,16 +7,15 @@ import { WorkoutCard } from "@/components/workout-card";
 import type { Workout } from "@/types/workout";
 import bannerImage from "../../assets/banner.png";
 
-const API_URL = "https://api.abcz.workers.dev/api/fitlog";
-
 export default function HomePage() {
   const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [requestId, setRequestId] = useState(0);
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch(API_URL, { signal: controller.signal })
+    fetch("/api/workouts", { signal: controller.signal })
       .then((response) => {
         if (!response.ok)
           throw new Error("Could not load the workout library.");
@@ -27,9 +26,11 @@ export default function HomePage() {
         if (reason instanceof Error && reason.name !== "AbortError")
           setError(reason.message);
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        if (!controller.signal.aborted) setLoading(false);
+      });
     return () => controller.abort();
-  }, []);
+  }, [requestId]);
 
   return (
     <>
@@ -110,7 +111,13 @@ export default function HomePage() {
           ) : error ? (
             <div className="error-state">
               {error}{" "}
-              <button onClick={() => window.location.reload()}>
+              <button
+                onClick={() => {
+                  setError("");
+                  setLoading(true);
+                  setRequestId((current) => current + 1);
+                }}
+              >
                 Try again
               </button>
             </div>
