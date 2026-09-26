@@ -33,7 +33,11 @@ export function FitlogProvider({ children }: { children: ReactNode }) {
       try {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) {
-          const value = JSON.parse(stored) as { plan?: Workout[]; saved?: Workout[]; done?: number[] };
+          const value = JSON.parse(stored) as {
+            plan?: Workout[];
+            saved?: Workout[];
+            done?: number[];
+          };
           setPlan(value.plan ?? []);
           setSaved(value.saved ?? []);
           setDone(value.done ?? []);
@@ -47,7 +51,8 @@ export function FitlogProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (hydrated) localStorage.setItem(STORAGE_KEY, JSON.stringify({ plan, saved, done }));
+    if (hydrated)
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ plan, saved, done }));
   }, [plan, saved, done, hydrated]);
 
   useEffect(() => {
@@ -58,13 +63,16 @@ export function FitlogProvider({ children }: { children: ReactNode }) {
 
   const notify = (message: string) => setToast(message);
   const addToPlan = (workout: Workout) => {
-    if (plan.some((item) => item.id === workout.id)) return notify("This lift is already in today's plan");
-    if (plan.length >= 5) return notify("Today's plan is full. Finish a lift to add another.");
+    if (plan.some((item) => item.id === workout.id))
+      return notify("This lift is already in today's plan");
+    if (plan.length >= 5)
+      return notify("Today's plan is full. Finish a lift to add another.");
     setPlan((current) => [...current, workout]);
     notify("Added to today's plan");
   };
   const saveWorkout = (workout: Workout) => {
-    if (saved.some((item) => item.id === workout.id)) return notify("This lift is already saved");
+    if (saved.some((item) => item.id === workout.id))
+      return notify("This lift is already saved");
     setSaved((current) => [...current, workout]);
     notify("Saved for later");
   };
@@ -79,12 +87,28 @@ export function FitlogProvider({ children }: { children: ReactNode }) {
   };
   const toggleDone = (id: number) => {
     const wasDone = done.includes(id);
-    setDone((current) => wasDone ? current.filter((item) => item !== id) : [...current, id]);
+    setDone((current) =>
+      wasDone ? current.filter((item) => item !== id) : [...current, id],
+    );
     notify(wasDone ? "Lift marked as not done" : "Lift marked as done");
   };
 
   return (
-    <FitlogContext.Provider value={{ plan, saved, done, hydrated, toast, addToPlan, saveWorkout, removeFromPlan, removeSaved, toggleDone, notify }}>
+    <FitlogContext.Provider
+      value={{
+        plan,
+        saved,
+        done,
+        hydrated,
+        toast,
+        addToPlan,
+        saveWorkout,
+        removeFromPlan,
+        removeSaved,
+        toggleDone,
+        notify,
+      }}
+    >
       {children}
     </FitlogContext.Provider>
   );

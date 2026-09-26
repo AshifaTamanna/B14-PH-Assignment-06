@@ -7,7 +7,9 @@ export const metadata: Metadata = {
   description: "A no-nonsense workout library and daily training log.",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body>
