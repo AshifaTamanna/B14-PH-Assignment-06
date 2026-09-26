@@ -118,11 +118,15 @@ function MyPlanContent() {
     const key = sortKeys[sortBy];
     return [...currentList].sort((a, b) => b[key] - a[key]);
   }, [currentList, sortBy]);
-  const totalMinutes = currentList.reduce(
+  const metricWorkouts =
+    tab === "plan"
+      ? currentList.filter((workout) => !done.includes(workout.id))
+      : currentList;
+  const totalMinutes = metricWorkouts.reduce(
     (total, workout) => total + workout.duration,
     0,
   );
-  const totalCalories = currentList.reduce(
+  const totalCalories = metricWorkouts.reduce(
     (total, workout) => total + workout.caloriesBurned,
     0,
   );
@@ -167,7 +171,7 @@ function MyPlanContent() {
       <div className="metrics-row">
         <div className="metric">
           <span>EXERCISES</span>
-          <strong>{currentList.length}</strong>
+          <strong>{metricWorkouts.length}</strong>
           <span className="metric-mark">01</span>
         </div>
         <div className="metric">
